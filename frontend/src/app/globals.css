@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Professional Dark Theme */
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 221.2 83.2% 53.3%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+  --radius: 0.75rem;
+  --sidebar: 222.2 84% 4.9%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-primary: 221.2 83.2% 53.3%;
+  --sidebar-primary-foreground: 210 40% 98%;
+  --sidebar-accent: 217.2 32.6% 17.5%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-border: 217.2 32.6% 17.5%;
+  --sidebar-ring: 221.2 83.2% 53.3%;
+}
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.05) 0%, transparent 50%);
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+  
+  /* Selection */
+  ::selection {
+    @apply bg-primary/20 text-primary-foreground;
+  }
+  
+  /* Focus styles */
+  .focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Professional gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.8) 100%);
+  }
+  
+  .gradient-card {
+    background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card) / 0.95) 100%);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+  
+  /* Professional shadows */
+  .shadow-professional {
+    box-shadow: 
+      0 4px 6px -1px hsl(var(--foreground) / 0.1),
+      0 2px 4px -1px hsl(var(--foreground) / 0.06),
+      0 0 0 1px hsl(var(--border) / 0.05);
+  }
+  
+  .shadow-professional-lg {
+    box-shadow: 
+      0 10px 15px -3px hsl(var(--foreground) / 0.1),
+      0 4px 6px -2px hsl(var(--foreground) / 0.05),
+      0 0 0 1px hsl(var(--border) / 0.05);
+  }
+  
+  /* Hover animations */
+  .hover-lift {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 10px 15px -3px hsl(var(--foreground) / 0.1),
+      0 4px 6px -2px hsl(var(--foreground) / 0.05);
+  }
+  
+  /* Professional button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 focus:ring-2 focus:ring-secondary/50 focus:ring-offset-2 focus:ring-offset-background transition-all duration-200;
+  }
+  
+  /* Card enhancements */
+  .card-professional {
+    @apply bg-card border border-border rounded-lg shadow-professional hover-lift;
+  }
+  
+  /* Input enhancements */
+  .input-professional {
+    @apply bg-input border border-input focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+  }
+  
+  /* Status indicators - Dark theme compatible */
+  .status-todo {
+    @apply bg-muted/50 text-muted-foreground border-border;
+  }
+  
+  .status-in-progress {
+    @apply bg-primary/20 text-primary border-primary/30;
+  }
+  
+  .status-done {
+    @apply bg-green-500/20 text-green-400 border-green-500/30;
+  }
+  
+  .priority-high {
+    @apply bg-red-500/20 text-red-400 border-red-500/30;
+  }
+  
+  .priority-medium {
+    @apply bg-yellow-500/20 text-yellow-400 border-yellow-500/30;
+  }
+  
+  .priority-low {
+    @apply bg-green-500/20 text-green-400 border-green-500/30;
+  }
+  
+  /* Loading animations */
+  .animate-pulse-slow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+  
+  /* Kanban board enhancements */
+  .kanban-column {
+    @apply bg-card/50 border border-border rounded-lg p-4 min-h-[500px] transition-all duration-200;
+  }
+  
+  .kanban-column:hover {
+    @apply bg-card/70 border-primary/20;
+  }
+  
+  .task-card {
+    @apply bg-card border border-border rounded-lg p-4 shadow-professional hover-lift cursor-move transition-all duration-200;
+  }
+  
+  .task-card:hover {
+    @apply shadow-professional-lg border-primary/30;
+  }
+  
+  .task-card.dragging {
+    @apply opacity-50 rotate-2 scale-105 shadow-professional-lg;
+  }
+  
+  /* Dashboard enhancements */
+  .stat-card {
+    @apply bg-card border border-border rounded-xl p-6 shadow-professional hover-lift;
+  }
+  
+  .chart-container {
+    @apply bg-card border border-border rounded-xl p-6 shadow-professional;
+  }
+  
+}
